@@ -1,0 +1,5 @@
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\Business Layer_MindOfSolution\obj\Debug\net8.0\Business Layer_MindOfSolution.csproj.AssemblyReference.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\Business Layer_MindOfSolution\obj\Debug\net8.0\Business Layer_MindOfSolution.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\Business Layer_MindOfSolution\obj\Debug\net8.0\Business Layer_MindOfSolution.AssemblyInfoInputs.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\Business Layer_MindOfSolution\obj\Debug\net8.0\Business Layer_MindOfSolution.AssemblyInfo.cs
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\Business Layer_MindOfSolution\obj\Debug\net8.0\Business Layer_MindOfSolution.csproj.CoreCompileInputs.cache
