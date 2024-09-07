@@ -1,0 +1,9 @@
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.AssemblyInfoInputs.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.AssemblyInfo.cs
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.csproj.CoreCompileInputs.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.RazorAssemblyInfo.cache
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.RazorAssemblyInfo.cs
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.sourcelink.json
+C:\Users\hp\OneDrive\Desktop\RAWAN\project\SOICAL MEDIA mvc\WebApplication1\obj\Debug\net8.0\Presentation Layer _Controller.csproj.AssemblyReference.cache
