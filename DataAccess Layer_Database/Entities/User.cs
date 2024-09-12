@@ -1,15 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess_Layer_Database.Entities
 {
-    public class User
+    [Table ("User")]
+    public class User: IdentityUser
     {
         //classes
-        public int UserID { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,5 +24,15 @@ namespace DataAccess_Layer_Database.Entities
         public string ProfilePicture { get; set; } // byte[]??
         public string bio { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
+        public int BirthDay { get; set; }
+        public int BirthMonth { get; set; }
+        public int BirthYear { get; set; }
+        public string PhoneNumber { get; set; }
+        public string About { get; set; }
+
+        //Navigation Property
+        public List<Likes> Likes{ get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

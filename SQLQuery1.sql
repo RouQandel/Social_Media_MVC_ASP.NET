@@ -1,170 +1,187 @@
-CREATE TABLE Users (
-    UserID INT PRIMARY KEY IDENTITY(1,1),
+﻿CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
     UserName NVARCHAR(255) NOT NULL,
-    Password VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL,
+    Email NVARCHAR(255) NOT NULL,
+    Password NVARCHAR(255) NOT NULL,
     DateOfBirth DATE,
-    ProfilePicture VARCHAR(255),
-    Bio NVARCHAR(255),
+    ProfilePicture NVARCHAR(255),
+    Bio NVARCHAR(500),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-
+GO
 
 CREATE TABLE Posts (
     PostID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT,  
     Content NVARCHAR(MAX) NOT NULL,
-    ImageURL NVARCHAR(255),
-    DateCreated DATETIME DEFAULT GETDATE()
+    DateCreated DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_Posts_Users FOREIGN KEY (UserID) REFERENCES Users(Id) ON DELETE CASCADE
 );
- go 
- CREATE TABLE Comments (
+GO
+
+CREATE TABLE Comments (
     CommentID INT PRIMARY KEY IDENTITY(1,1),
     PostID INT FOREIGN KEY REFERENCES Posts(PostID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     Content NVARCHAR(MAX) NOT NULL,
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
 CREATE TABLE Likes (
     LikeID INT PRIMARY KEY IDENTITY(1,1),
     PostID INT FOREIGN KEY REFERENCES Posts(PostID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
 
 CREATE TABLE Friendships (
     FriendshipID INT PRIMARY KEY IDENTITY(1,1),
-    UserID1 INT FOREIGN KEY REFERENCES Users(UserID),
-    UserID2 INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID1 INT FOREIGN KEY REFERENCES Users(Id),
+    UserID2 INT FOREIGN KEY REFERENCES Users(Id),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go 
+GO
+
 CREATE TABLE FriendRequests (
     RequestID INT PRIMARY KEY IDENTITY(1,1),
-    SenderID INT FOREIGN KEY REFERENCES Users(UserID),
-    ReceiverID INT FOREIGN KEY REFERENCES Users(UserID),
+    SenderID INT FOREIGN KEY REFERENCES Users(Id),
+    ReceiverID INT FOREIGN KEY REFERENCES Users(Id),
     Status NVARCHAR(50) NOT NULL,
     DateRequested DATETIME DEFAULT GETDATE()
 );
-go 
+GO
+
 CREATE TABLE Follows (
     FollowID INT PRIMARY KEY IDENTITY(1,1),
-    FollowerID INT FOREIGN KEY REFERENCES Users(UserID),
-    FollowingID INT FOREIGN KEY REFERENCES Users(UserID),
+    FollowerID INT FOREIGN KEY REFERENCES Users(Id),
+    FollowingID INT FOREIGN KEY REFERENCES Users(Id),
     DateFollowed DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
 CREATE TABLE Notifications (
     NotificationID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     Message NVARCHAR(MAX) NOT NULL,
     IsRead BIT DEFAULT 0,
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
 CREATE TABLE Groups (
     GroupID INT PRIMARY KEY IDENTITY(1,1),
     GroupName NVARCHAR(100) NOT NULL,
     Description NVARCHAR(255),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go 
+GO
+
+
 CREATE TABLE GroupMembers (
     GroupMemberID INT PRIMARY KEY IDENTITY(1,1),
     GroupID INT FOREIGN KEY REFERENCES Groups(GroupID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     DateJoined DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
+
 CREATE TABLE GroupPosts (
     GroupPostID INT PRIMARY KEY IDENTITY(1,1),
     GroupID INT FOREIGN KEY REFERENCES Groups(GroupID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     Content NVARCHAR(MAX) NOT NULL,
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
 CREATE TABLE GroupPostLikes (
     GroupPostLikeID INT PRIMARY KEY IDENTITY(1,1),
     GroupPostID INT FOREIGN KEY REFERENCES GroupPosts(GroupPostID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
 CREATE TABLE GroupPostComments (
     GroupPostCommentID INT PRIMARY KEY IDENTITY(1,1),
     GroupPostID INT FOREIGN KEY REFERENCES GroupPosts(GroupPostID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     Content NVARCHAR(MAX) NOT NULL,
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
+-- جدول الإعدادات
 CREATE TABLE Settings (
     SettingID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     SettingName NVARCHAR(100) NOT NULL,
     SettingValue NVARCHAR(255) NOT NULL
 );
-go 
+GO
+
+
 CREATE TABLE Events (
     EventID INT PRIMARY KEY IDENTITY(1,1),
     EventName NVARCHAR(100) NOT NULL,
     Description NVARCHAR(255),
     EventDate DATETIME NOT NULL,
-    CreatedByUserID INT FOREIGN KEY REFERENCES Users(UserID),
+    CreatedByUserID INT FOREIGN KEY REFERENCES Users(Id),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
+
 CREATE TABLE EventParticipants (
     EventParticipantID INT PRIMARY KEY IDENTITY(1,1),
     EventID INT FOREIGN KEY REFERENCES Events(EventID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     DateJoined DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
+
 CREATE TABLE Activities (
     ActivityID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     ActivityType NVARCHAR(50) NOT NULL,
     Description NVARCHAR(255),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go 
+GO
+
+-- جدول رسائل المجموعات
 CREATE TABLE GroupMessages (
     GroupMessageID INT PRIMARY KEY IDENTITY(1,1),
     GroupID INT FOREIGN KEY REFERENCES Groups(GroupID),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     Content NVARCHAR(MAX) NOT NULL,
     DateSent DATETIME DEFAULT GETDATE()
 );
-go 
+GO
+
+
 CREATE TABLE Interactions (
     InteractionID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    UserID INT FOREIGN KEY REFERENCES Users(Id),
     InteractionType NVARCHAR(50) NOT NULL,
     TargetID INT,
     TargetType NVARCHAR(50),
     DateCreated DATETIME DEFAULT GETDATE()
 );
-go
+GO
+
+
 CREATE TABLE Messages (
     MessageID INT PRIMARY KEY IDENTITY(1,1),
     SenderID INT,
     ReceiverID INT,
     Content TEXT NOT NULL,
     Timestamp DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (SenderID) REFERENCES Users(UserID),
-    FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
+    FOREIGN KEY (SenderID) REFERENCES Users(Id),
+    FOREIGN KEY (ReceiverID) REFERENCES Users(Id)
 );
-go 
- 
-
- INSERT INTO Users (UserName, Password, Email, DateOfBirth, ProfilePicture)
-VALUES 
-('JohnDoe', 'password123', 'john.doe@example.com', '1990-05-14', 'profile1.jpg'),
-('JaneSmith', 'password456', 'jane.smith@example.com', '1992-07-21', 'profile2.jpg'),
-('AliceJohnson', 'password789', 'alice.johnson@example.com', '1985-09-30', 'profile3.jpg');
-
-
+GO
