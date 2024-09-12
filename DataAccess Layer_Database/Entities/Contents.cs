@@ -18,6 +18,6 @@ namespace DataAccess_Layer_Database.Entities
         public int PostId { get; set; }
 
         //Navigation Property
-        public Post Post { get; set; }
+        public Posts Post { get; set; }
     }
 }

@@ -9,8 +9,17 @@ using System.Threading.Tasks;
 
 namespace DataAccess_Layer_Database.Configuration
 {
-    public class PostMap /*: IEntityTypeConfiguration<Post>*/
+    public class PostMap : IEntityTypeConfiguration<Posts>
     {
+        public void Configure(EntityTypeBuilder<Posts> builder)
+        {
+            builder.Property(p => p.Title).IsRequired().HasMaxLength(120);
+            builder.Property(p => p.thumbnail).IsRequired();
+            builder.Property(p => p.CreatedAt).IsRequired();
 
+            builder.HasOne(u => u.user)
+                 .WithMany(p => p.Posts)
+                 .HasForeignKey(i => i.Id);
+        }
     }
 }

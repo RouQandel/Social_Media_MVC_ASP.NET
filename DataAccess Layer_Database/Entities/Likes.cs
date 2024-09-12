@@ -23,6 +23,6 @@ namespace DataAccess_Layer_Database.Entities
 
         //Navigation Property
         public User user {  get; set; }
-        List<Post> posts { get; set; }
+        List<Posts> posts { get; set; }
     }
 }

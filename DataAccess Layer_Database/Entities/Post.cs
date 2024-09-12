@@ -10,12 +10,16 @@ using System.Threading.Tasks;
 namespace DataAccess_Layer_Database.Entities
 {
     [Table("post")]
-    public class Post
+    public class Posts
     {
         [Key]
-        public int Id { get; set; }
         public int PostID { get; set; }
+
+        [ForeignKey(nameof(User))]
+        public int Id { get; set; }
         public int CommentID { get; set; }
+        public string Title { get; set; }
+        public string thumbnail { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int LikeCount { get; set; }
@@ -23,10 +27,14 @@ namespace DataAccess_Layer_Database.Entities
         public bool IsDeleted { get; set; }
         public string AttachmentPath { get; set; }
         public string PostType { get; set; }
+        public bool IsPublished { get; set; } = false;
 
         //Navigation Property
+        public User user { get; set; }
         public Likes like {  get; set; }
         public List<Contents> Contents { get; set; }
         List<Comment> comments { get; set; }
+        ICollection<PostTag> postTags { get; set; }
+        ICollection<PostCategory> postCategories{ get; set; }
     }
 }

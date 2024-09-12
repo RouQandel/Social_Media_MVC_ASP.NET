@@ -20,7 +20,7 @@ namespace DataAccess_Layer_Database.Entities
 
         //Navigation Property
         public Tag Tag { get; set; }
-        public Post Post { get; set; }
+        public Posts Post { get; set; }
 
     }
 }

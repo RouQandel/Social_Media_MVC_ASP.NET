@@ -1,6 +1,7 @@
 ﻿using DataAccess_Layer_Database.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace DataAccess_Layer_Database.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
+            //OptionsBuilder.UseSqlServer(@"Servker=ROU\\MSSQLSERVER01;Database=SocialMediaMVC;integrated security=SSPI;");
         }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Posts> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }

@@ -32,7 +32,7 @@ namespace DataAccess_Layer_Database.Entities
 
         //Navigation Property
         public List<Likes> Likes{ get; set; }
-        public List<Post> Posts { get; set; }
+        public List<Posts> Posts { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }
