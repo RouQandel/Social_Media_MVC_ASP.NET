@@ -1,4 +1,5 @@
-﻿using DataAccess_Layer_Database.Entities;
+﻿using DataAccess_Layer_Database.Configuration;
+using DataAccess_Layer_Database.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -27,7 +28,7 @@ namespace DataAccess_Layer_Database.Context
         {
             //modelBuilder.ApplyConfiguration(new PostCategory());
             //modelBuilder.ApplyConfiguration(new PostTagMap());
-            //modelBuilder.ApplyConfiguration(new PostMap());
+            modelBuilder.ApplyConfiguration(new PostConfiguration());
             //modelBuilder.ApplyConfiguration(new CategoryMap());
             //modelBuilder.ApplyConfiguration(new TagMap());
             //modelBuilder.ApplyConfiguration(new ContentsMap());

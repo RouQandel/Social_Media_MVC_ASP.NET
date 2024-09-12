@@ -19,13 +19,13 @@ namespace DataAccess_Layer_Database.Entities
         public string Message { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
 
-        [ForeignKey(nameof(Post))]
+        [ForeignKey(nameof(Posts))]
         public int PostId { get; set; }
 
         //Navigation Property
         public User user{ get; set; }
-        public Posts Post { get; set; }
-        public Posts post {  get; set; }
+        public Posts Posts { get; set; }
+       
 
        
     }

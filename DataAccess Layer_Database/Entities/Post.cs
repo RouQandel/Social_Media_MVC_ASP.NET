@@ -33,7 +33,7 @@ namespace DataAccess_Layer_Database.Entities
         public User user { get; set; }
         public Likes like {  get; set; }
         public List<Contents> Contents { get; set; }
-        List<Comment> comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
         ICollection<PostTag> postTags { get; set; }
         ICollection<PostCategory> postCategories{ get; set; }
     }

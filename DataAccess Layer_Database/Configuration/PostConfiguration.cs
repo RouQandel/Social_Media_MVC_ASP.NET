@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess_Layer_Database.Configuration
 {
-    public class PostMap : IEntityTypeConfiguration<Posts>
+    public class PostConfiguration : IEntityTypeConfiguration<Posts>
     {
         public void Configure(EntityTypeBuilder<Posts> builder)
         {
