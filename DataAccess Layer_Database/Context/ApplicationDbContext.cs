@@ -26,13 +26,13 @@ namespace DataAccess_Layer_Database.Context
         public DbSet<Comment> Comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration(new PostCategory());
-            //modelBuilder.ApplyConfiguration(new PostTagMap());
+            modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new PostConfiguration());
-            //modelBuilder.ApplyConfiguration(new CategoryMap());
-            //modelBuilder.ApplyConfiguration(new TagMap());
-            //modelBuilder.ApplyConfiguration(new ContentsMap());
-            //modelBuilder.ApplyConfiguration(new CommentMap());
+            //modelBuilder.ApplyConfiguration(new PostCategory());
+            //modelBuilder.ApplyConfiguration(new PostTagConfiguration());
+            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new TagConfiguration());
+            //modelBuilder.ApplyConfiguration(new ContentsConfiguration());
             modelBuilder.ApplyConfigurationsFromAssembly
             (
                 typeof(ApplicationDbContext).Assembly
