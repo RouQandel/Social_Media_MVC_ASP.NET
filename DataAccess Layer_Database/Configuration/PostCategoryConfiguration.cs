@@ -9,20 +9,19 @@ using System.Threading.Tasks;
 
 namespace DataAccess_Layer_Database.Configuration
 {
-    public class PostTagConfiguration : IEntityTypeConfiguration<PostTag>
+    public class PostCategoryConfiguration : IEntityTypeConfiguration<PostCategory>
     {
-        public void Configure(EntityTypeBuilder<PostTag> builder)
+        public void Configure(EntityTypeBuilder<PostCategory> builder)
         {
-            builder.HasKey(pt => new { pt.PostId, pt.TagId});
+            builder.HasKey(pc => new { pc.PostId, pc.CategoryId });
 
             builder.HasOne(p => p.Post)
-                .WithMany(pt => pt.PostTags)
+                .WithMany(c => c.postCategories)
                 .HasForeignKey(p => p.PostId);
 
-            builder.HasOne(t => t.Tag)
-                .WithMany(pt => pt.PostTags)
-                .HasForeignKey(t => t.TagId);
-
+            builder.HasOne(p => p.Category)
+                .WithMany(pc => pc.PostCategories)
+                .HasForeignKey(c => c.CategoryId);
 
         }
     }

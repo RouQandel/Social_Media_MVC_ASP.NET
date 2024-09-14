@@ -18,9 +18,11 @@ namespace DataAccess_Layer_Database.Configuration
                  .WithMany(c => c.Comments)
                  .HasForeignKey(i => i.PostId);
 
-            builder.HasOne(u => u.user)
-                .WithMany(c => c.Comments)
-                .HasForeignKey(i => i.Id);
+            builder.HasOne(c => c.user)
+               .WithMany(u => u.Comments)
+               .HasForeignKey(c => c.UserId)
+               .HasPrincipalKey(u => u.Id);
+
             builder.Property(i => i.Message).IsRequired();
             builder.Property(i => i.Date).IsRequired();
         }

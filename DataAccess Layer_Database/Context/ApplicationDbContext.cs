@@ -15,7 +15,7 @@ namespace DataAccess_Layer_Database.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            //OptionsBuilder.UseSqlServer(@"Servker=ROU\\MSSQLSERVER01;Database=SocialMediaMVC;integrated security=SSPI;");
+           
         }
         public DbSet<Posts> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -28,11 +28,12 @@ namespace DataAccess_Layer_Database.Context
         {
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new PostConfiguration());
-            //modelBuilder.ApplyConfiguration(new PostCategory());
-            //modelBuilder.ApplyConfiguration(new PostTagConfiguration());
-            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            //modelBuilder.ApplyConfiguration(new TagConfiguration());
-            //modelBuilder.ApplyConfiguration(new ContentsConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTagConfiguration());
+            modelBuilder.ApplyConfiguration(new PostCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new TagConfiguration());
+            modelBuilder.ApplyConfiguration(new ContentsConfiguration());
+
             modelBuilder.ApplyConfigurationsFromAssembly
             (
                 typeof(ApplicationDbContext).Assembly
