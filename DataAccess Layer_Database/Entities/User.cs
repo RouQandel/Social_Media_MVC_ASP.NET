@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace DataAccess_Layer_Database.Entities
 {
     [Table ("User")]
-    public class User: IdentityUser
+    public class User : IdentityUser<int>
     {
         //classes
         [Key]
@@ -21,7 +21,7 @@ namespace DataAccess_Layer_Database.Entities
         public string Password { get; set; }
         public string Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string ProfilePicture { get; set; } // byte[]??
+        public string ProfilePicture { get; set; } 
         public string bio { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public int BirthDay { get; set; }

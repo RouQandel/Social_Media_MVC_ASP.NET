@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Repositores\Post\" />
-    <Folder Include="Repositores\Tags\" />
   </ItemGroup>
 
 </Project>
