@@ -1,22 +1,17 @@
 ﻿using DataAccess_Layer_Database.Entities;
+using DataAccess_Layer_Database.Repositores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess_Layer_Database.Repositores.User
+namespace DataAccess_Layer_Database
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGenericRepository<User>
     {
-        //User? GetUserById(int userId); // mmkn yrg3 w mmkn la ?
-        //Task<IEnumerable<User>> GetAllUsers();
-        //Task CreateUser(User user);
-        //void RemoveUser(int userId);
-        //void UpdateUser(User user);
-        //void DeleteUser(User user);
-        //void SaveChanges();
-
-        //int GetMaxById(int userId);
+        public Task<List<User>> UserListAsync();
+        public Task<User> UserDetailsAsync(User user);
+        public Task<User> UserIdWithAsNoTracking(string id);
     }
 }

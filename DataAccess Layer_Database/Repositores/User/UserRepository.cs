@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess_Layer_Database.Repositores.User
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository 
     {
         //private readonly ApplicationDbContext _DbContext; //save 34an ast5dmah gwa al class da 
 
