@@ -13,9 +13,12 @@ namespace DataAccess_Layer_Database
     {
         List<Posts> GetPostsIcludeCatgoriesAnsTagsAsync(Types types);
         Posts GetPostByIdWithCategoriesAndTags (Types types, int id);
+        Task<IQueryable<Posts>> GetPostsOrderByDate();
+        Task<List<Posts>> PostsWithUsers();
         IQueryable<Posts> SearchPost(string text);
         Task<Posts> AddCategoryForPost(Posts posts , List<int> CategoryIds);
-        Task<Posts> AddTagForPost(Posts posts ,List<int> TagIds);  
+        Task<Posts> AddTagForPost(Posts posts ,List<int> TagIds);
+        Posts GetPostByIdWithContents(int id);
         public Posts GetPostByIdWithEverything (int id);
 
     }

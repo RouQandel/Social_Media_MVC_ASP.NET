@@ -1,6 +1,6 @@
 using Business_Layer_MindOfSolution.DTOs;
 using Business_Layer_MindOfSolution.Serivces_Manager.UserService;
-using DataAccess_Layer_Database.Context;
+using DataAccess_Layer_Database.context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 

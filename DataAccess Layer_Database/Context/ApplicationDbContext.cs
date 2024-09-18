@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess_Layer_Database.Context
+namespace DataAccess_Layer_Database.context
 {
     public class ApplicationDbContext : IdentityDbContext<User, Role, int>
     {

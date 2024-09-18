@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Business_Layer_MindOfSolution.DTOs
 {
-    public class practise : Ipractise
+    public class practise /*: Ipractise*/
     {
        
         //private readonly IUserRepository _userRepository; // relation to dataaccess

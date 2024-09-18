@@ -19,6 +19,7 @@ namespace DataAccess_Layer_Database.Entities
             public int Id { get; set; }
             public int CommentID { get; set; }
             public string Title { get; set; }
+            public string Summary { get; set; }
             public string thumbnail { get; set; }
             public DateTime CreatedAt { get; set; }
             public DateTime? UpdatedAt { get; set; }
