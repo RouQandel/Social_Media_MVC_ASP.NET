@@ -88,19 +88,37 @@ namespace DataAccess_Layer_Database
             return posts;
         }
 
-        public Task<Posts> AddTagForPost(Posts posts, List<int> TagIds)
+        public async Task<Posts> AddTagForPost(Posts posts, List<int> TagIds)
         {
-            throw new NotImplementedException();
+            if(TagIds != null)
+            {
+                foreach(var tag in TagIds) 
+                {
+                    var postTag = new PostTag()
+                    {
+                        TagId =tag,
+                        Post = posts,
+                        PostId = posts.Id,
+                        Tag = await tagRepository.GetByIdAsync(tag)
+                    };
+                    posts.PostTags.Add(postTag);
+                }
+            }
+                return posts;
         }
 
         public Posts GetPostByIdWithEverything(int id)
         {
-            throw new NotImplementedException();
+            var result = context.Posts.Include(p => p.Contents).Include(i => i.Comments).Include(i => i.PostTags).ThenInclude(t => t.Tag)
+               .AsNoTracking() 
+               .FirstOrDefault(i => i.Id == id);
+            return result;
         }
 
-        public Task<IQueryable<Posts>> GetPostsOrderByDate()
+        public async Task<IQueryable<Posts>> GetPostsOrderByDate()
         {
-            throw new NotImplementedException();
+            var posts = await PostsWithUsers();//call data bt3at al post we user
+            return posts.OrderByDescending(d => d.CreatedAt).AsQueryable(); // bartb al post 3la hasb ali nazl a5r haga 
         }
 
         public async Task<List<Posts>> PostsWithUsers()
@@ -120,7 +138,10 @@ namespace DataAccess_Layer_Database
 
         public Posts GetPostByIdWithContents(int id)
         {
-            throw new NotImplementedException();
+            var result = context.Posts.Include(p => p.Contents)
+             .AsNoTracking() //
+             .FirstOrDefault(i => i.Id == id);
+            return result;
         }
     }
    
